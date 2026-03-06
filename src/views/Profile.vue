@@ -65,9 +65,11 @@
           <div class="pt-8 border-t border-gray-100 dark:border-slate-700 flex justify-end">
             <button
               @click="saveProfile"
-              class="px-10 py-4 bg-primary text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 transform hover:-translate-y-1 transition duration-200"
+              :disabled="loading"
+              class="px-10 py-4 bg-primary text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 transform hover:-translate-y-1 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center space-x-2"
             >
-              Update Preferences
+              <span v-if="loading" class="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full mr-2"></span>
+              <span>{{ loading ? 'Updating...' : 'Update Preferences' }}</span>
             </button>
           </div>
         </div>
@@ -80,6 +82,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { LogOut, User } from 'lucide-vue-next'
+import { toast } from 'vue-sonner'
 import { useAuthStore } from '../stores/auth'
 import { supabase, isDemoMode } from '../api/supabase'
 import AppLayout from '../layouts/AppLayout.vue'
@@ -127,8 +130,8 @@ const saveProfile = async () => {
     try {
         if (isDemoMode) {
             // Simulated save for demo mode
-            await new Promise(resolve => setTimeout(resolve, 500))
-            alert('Profile updated successfully (Demo Mode)!')
+            await new Promise(resolve => setTimeout(resolve, 800))
+            toast.success('Profile updated successfully (Demo Mode)!')
             return
         }
 
@@ -143,9 +146,9 @@ const saveProfile = async () => {
             .eq('id', authStore.user.id)
         
         if (error) throw error
-        alert('Profile updated successfully!')
+        toast.success('Profile updated successfully!')
     } catch (e: any) {
-        alert(e.message || 'Error updating profile')
+        toast.error(e.message || 'Error updating profile')
     } finally {
         loading.value = false
     }

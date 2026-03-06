@@ -76,10 +76,12 @@
               </div>
               <button 
                 @click="handleLogout"
-                class="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200 group/logout"
+                :disabled="logoutLoading"
+                class="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200 group/logout disabled:opacity-50"
                 title="Logout"
               >
-                <LogOut class="w-5 h-5 transition-transform group-hover/logout:scale-110" />
+                <span v-if="logoutLoading" class="animate-spin h-5 w-5 border-2 border-red-500 border-t-transparent rounded-full"></span>
+                <LogOut v-else class="w-5 h-5 transition-transform group-hover/logout:scale-110" />
               </button>
             </div>
           </div>
@@ -159,13 +161,19 @@ defineProps<{
 }>()
 
 const isOpen = ref(false)
+const logoutLoading = ref(false)
 const authStore = useAuthStore()
 const uiStore = useUIStore()
 const router = useRouter()
 
 const handleLogout = async () => {
-  await authStore.signOut()
-  router.push('/login')
+  logoutLoading.value = true
+  try {
+    await authStore.signOut()
+    router.push('/login')
+  } finally {
+    logoutLoading.value = false
+  }
 }
 
 onMounted(() => {

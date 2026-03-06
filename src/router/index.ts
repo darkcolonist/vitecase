@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 import { useAuthStore } from '../stores/auth'
+
+// Configure NProgress
+NProgress.configure({ showSpinner: false, trickleSpeed: 200 })
 
 const routes = [
   {
@@ -32,6 +37,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, _from, next) => {
+  NProgress.start()
   const authStore = useAuthStore()
 
   // Ensure auth is initialized before checking
@@ -43,14 +49,20 @@ router.beforeEach(async (to, _from, next) => {
   const isAuthenticated = !!authStore.session
 
   if (!isPublic && !isAuthenticated) {
+    NProgress.done()
     return next({ name: 'login' })
   }
 
   if (isPublic && isAuthenticated && (to.name === 'login' || to.name === 'landing')) {
+    NProgress.done()
     return next({ name: 'dashboard' })
   }
 
   next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
 })
 
 export default router

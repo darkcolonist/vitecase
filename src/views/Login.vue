@@ -37,10 +37,10 @@
         <button
           type="submit"
           :disabled="loading"
-          class="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-xl text-sm font-bold text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 transform active:scale-[0.98] transition-all duration-200"
+          class="w-full flex justify-center items-center py-4 px-4 border border-transparent rounded-xl shadow-xl text-sm font-bold text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 transform active:scale-[0.98] transition-all duration-200"
         >
-          <span v-if="loading">Authenticating...</span>
-          <span v-else>Authorize Access</span>
+          <span v-if="loading" class="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full mr-2"></span>
+          <span>{{ loading ? 'Authenticating...' : 'Authorize Access' }}</span>
         </button>
       </form>
 
@@ -54,6 +54,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { toast } from 'vue-sonner'
 import { supabase, isDemoMode } from '../api/supabase'
 import { useAuthStore } from '../stores/auth'
 
@@ -82,7 +83,7 @@ const handleLogin = async () => {
             router.push('/dashboard')
         }
     } catch (e: any) {
-        alert(e.message || 'Failed to login')
+        toast.error(e.message || 'Failed to login')
     } finally {
         loading.value = false
     }

@@ -7,7 +7,36 @@
   --secondary: #1e293b;
 }
 
+html {
+  background-color: #f9fafb; /* bg-gray-50 */
+}
+
+html.dark {
+  background-color: #020617; /* bg-slate-950 */
+}
+
 body {
   margin: 0;
   padding: 0;
+  color: #111827; /* text-gray-900 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  color: #f3f4f6; /* text-gray-100 */
+}
+
+/* NProgress Customization */
+#nprogress .bar {
+  background: var(--primary) !important;
+  height: 3px !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--primary), 0 0 5px var(--primary) !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: var(--primary) !important;
+  border-left-color: var(--primary) !important;
 }

@@ -22,7 +22,7 @@ Designed for **Static Hosting on Cloudflare Pages** with a **Supabase custom-sch
 # Clone and install
 git clone [https://github.com/YOUR_USERNAME/ViteCase.git](https://github.com/YOUR_USERNAME/ViteCase.git)
 cd ViteCase
-pnpm install
+npm install
 
 ```
 
@@ -42,7 +42,7 @@ npx supabase migration up
 ### 3. Run the App
 
 ```bash
-pnpm dev
+npm run dev
 
 ```
 
@@ -90,17 +90,19 @@ This project is optimized for "Build from Git" on Cloudflare.
 
 ### Deployment Settings:
 
-1. **Framework Preset:** `Vite`
-2. **Build Command:** `pnpm run build`
+1. **Framework Preset:** `None`
+2. **Build Command:** `npm run build`
 3. **Build Output Directory:** `dist`
-4. **Root Directory:** `/`
+4. **Root Directory:** `/` (default)
+5. **Node.js Version:** `18` or higher (Set in Settings > Environment Variables)
 
 ### Environment Variables:
 
-Add these in the Cloudflare Dashboard under **Settings > Variables**:
+Add these in the Cloudflare Dashboard under **Settings > Environment Variables > [Both Production & Preview]**:
 
 * `VITE_SUPABASE_URL`: Your Supabase Project URL.
 * `VITE_SUPABASE_ANON_KEY`: Your Supabase Anon Key.
+* `NODE_VERSION`: `20` (Recommended for Vite 5 performance).
 
 ### The SPA Fix:
 

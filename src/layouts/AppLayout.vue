@@ -11,20 +11,20 @@
       <!-- Sidebar -->
       <aside
         :class="[
-          'fixed inset-y-0 left-0 bg-secondary text-white w-64 transform transition-transform duration-300 ease-in-out z-30 md:relative md:translate-x-0',
+          'fixed inset-y-0 left-0 bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-800 w-64 transform transition-all duration-300 ease-in-out z-30 md:relative md:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         ]"
       >
         <div class="flex flex-col h-full">
           <!-- Sidebar Header -->
-          <div class="p-6 border-b border-gray-700 flex items-center justify-between">
+          <div class="p-6 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="p-2 bg-primary rounded-lg shadow-lg">
+                <div class="p-2 bg-primary rounded-lg shadow-lg shadow-primary/20">
                   <Box class="w-6 h-6 text-white" />
                 </div>
-                <router-link to="/dashboard" class="text-xl font-bold tracking-tight hover:text-blue-200 transition-colors">ViteCase</router-link>
+                <router-link to="/dashboard" class="text-xl font-bold tracking-tight text-gray-800 dark:text-gray-100 hover:text-primary dark:hover:text-primary transition-colors">ViteCase</router-link>
             </div>
-            <button @click="isOpen = false" class="md:hidden text-gray-400 hover:text-white transition-colors duration-200">
+            <button @click="isOpen = false" class="md:hidden text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors duration-200">
               <X class="w-6 h-6" />
             </button>
           </div>
@@ -36,12 +36,12 @@
               class="flex items-center space-x-3 px-4 py-3 rounded-xl transition duration-200 group relative overflow-hidden"
               :class="[
                 $route.name === 'dashboard' 
-                  ? 'bg-primary text-white shadow-lg' 
-                  : 'text-gray-400 hover:bg-gray-800 hover:text-gray-100'
+                  ? 'bg-primary text-white shadow-lg shadow-primary/30' 
+                  : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-800 hover:text-primary dark:hover:text-gray-100'
               ]"
             >
               <div 
-                class="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300"
+                class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 dark:group-hover:opacity-10 transition-opacity duration-300"
               ></div>
               <LayoutDashboard class="w-5 h-5 flex-shrink-0" />
               <span class="font-medium relative z-10 transition-transform duration-300 group-hover:translate-x-1">Dashboard</span>
@@ -52,12 +52,12 @@
               class="flex items-center space-x-3 px-4 py-3 rounded-xl transition duration-200 group relative overflow-hidden"
               :class="[
                 $route.name === 'profile' 
-                  ? 'bg-primary text-white shadow-lg' 
-                  : 'text-gray-400 hover:bg-gray-800 hover:text-gray-100'
+                  ? 'bg-primary text-white shadow-lg shadow-primary/30' 
+                  : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-800 hover:text-primary dark:hover:text-gray-100'
               ]"
             >
               <div 
-                class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 dark:group-hover:opacity-10 transition-opacity duration-300"
               ></div>
               <UserCircle class="w-5 h-5 flex-shrink-0" />
               <span class="font-medium relative z-10 transition-transform duration-300 group-hover:translate-x-1">Profile</span>
@@ -65,19 +65,19 @@
           </nav>
 
           <!-- Sidebar Footer -->
-          <div class="p-4 border-t border-gray-700 space-y-3">
-            <div class="flex items-center space-x-3 px-4 py-3 bg-gray-800 rounded-xl border border-gray-700 shadow-inner group transition-all hover:bg-gray-750">
-              <div class="p-2 bg-blue-500 bg-opacity-20 rounded-lg group-hover:bg-opacity-30 transition-all duration-300">
-                <User class="w-5 h-5 text-blue-400" />
+          <div class="p-4 border-t border-gray-100 dark:border-slate-800 space-y-3">
+            <div class="flex items-center space-x-3 px-4 py-3 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-gray-100 dark:border-slate-800 shadow-inner group transition-all hover:bg-gray-100 dark:hover:bg-slate-800">
+              <div class="p-2 bg-primary/10 dark:bg-primary/20 rounded-lg group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-all duration-300">
+                <User class="w-5 h-5 text-primary" />
               </div>
               <div class="flex-1 min-w-0">
-                <p class="text-sm font-bold truncate text-gray-100">{{ authStore.user?.email || 'Loading...' }}</p>
-                <p class="text-xs text-blue-400 font-medium tracking-tight">Standard Tier</p>
+                <p class="text-sm font-bold truncate text-gray-800 dark:text-gray-100">{{ authStore.user?.email || 'Loading...' }}</p>
+                <p class="text-xs text-primary font-medium tracking-tight">Standard Tier</p>
               </div>
             </div>
             <button 
               @click="handleLogout"
-              class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500 hover:bg-opacity-10 transition duration-200 group"
+              class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition duration-200 group"
             >
               <LogOut class="w-5 h-5 transition-transform group-hover:scale-110" />
               <span class="font-medium">Logout</span>

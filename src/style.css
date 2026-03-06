@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #3b82f6;
+  --secondary: #1e293b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

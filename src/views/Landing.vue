@@ -200,7 +200,7 @@
           <h2 class="text-4xl font-bold text-white mb-6">Database & Schema Strategy</h2>
           <p class="text-slate-400 text-lg mb-8 leading-relaxed">
             ViteCase moves away from traditional, messy table structures. 
-            All application data lives in the <code class="text-blue-400 bg-blue-500/10 px-2 py-1 rounded">app_data</code> schema, ensuring a clean separation from auth and system tables.
+            All application data lives in a dedicated schema (defaults to <code class="text-blue-400 bg-blue-500/10 px-2 py-1 rounded">vitecase</code>), ensuring a clean separation from auth and system tables.
           </p>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -220,10 +220,10 @@
         <div class="lg:w-1/2 bg-slate-900 p-2 rounded-[2rem] border border-white/5 shadow-2xl overflow-hidden group">
           <div class="bg-slate-950 rounded-[1.5rem] p-8 border border-white/5 group-hover:scale-[1.02] transition-transform duration-500">
             <pre class="font-mono text-sm text-blue-400/80"><code>-- The ViteCase Way
-GRANT USAGE ON SCHEMA app_data TO anon, authenticated;
+GRANT USAGE ON SCHEMA vitecase TO anon, authenticated;
 
 -- Tables live here
-CREATE TABLE app_data.profiles (
+CREATE TABLE vitecase.profiles (
   id uuid REFERENCES auth.users NOT NULL,
   full_name text,
   updated_at timestamp
@@ -274,7 +274,7 @@ import {
 const features = [
   {
     title: 'Schema-First Architecture',
-    description: 'Clean data isolation using Supabase app_data schemas. No more table prefixing or messy migrations.',
+    description: 'Clean data isolation using Supabase vitecase schemas (fully configurable). No more table prefixing or messy migrations.',
     icon: ShieldCheck
   },
   {

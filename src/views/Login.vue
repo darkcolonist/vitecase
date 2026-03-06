@@ -9,7 +9,7 @@
         </div>
       </div>
 
-      <div class="space-y-6">
+      <form @submit.prevent="handleLogin" class="space-y-6">
         <div>
           <label class="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Identifier</label>
           <input
@@ -35,14 +35,14 @@
         </div>
 
         <button
-          @click="handleLogin"
+          type="submit"
           :disabled="loading"
           class="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-xl text-sm font-bold text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 transform active:scale-[0.98] transition-all duration-200"
         >
           <span v-if="loading">Authenticating...</span>
           <span v-else>Authorize Access</span>
         </button>
-      </div>
+      </form>
 
       <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
           <p>Request an account? <a href="#" class="text-primary font-bold hover:underline">Contact Admin</a></p>

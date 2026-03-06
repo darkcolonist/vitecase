@@ -45,7 +45,7 @@
               <label class="block text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Email Address</label>
               <input
                 type="email"
-                v-model="authStore.user!.email"
+                :value="authStore.user?.email || ''"
                 disabled
                 class="w-full px-4 py-4 border border-gray-200 dark:border-slate-700 rounded-xl bg-gray-100 dark:bg-slate-900/50 dark:text-gray-400 cursor-not-allowed opacity-75"
               />

@@ -65,7 +65,7 @@
           </nav>
 
           <!-- Sidebar Footer -->
-          <div class="p-4 border-t border-gray-100 dark:border-slate-800 space-y-3">
+          <div class="p-4 border-t border-gray-100 dark:border-slate-800">
             <div class="flex items-center space-x-3 px-4 py-3 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-gray-100 dark:border-slate-800 shadow-inner group transition-all hover:bg-gray-100 dark:hover:bg-slate-800">
               <div class="p-2 bg-primary/10 dark:bg-primary/20 rounded-lg group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-all duration-300">
                 <User class="w-5 h-5 text-primary" />
@@ -74,14 +74,14 @@
                 <p class="text-sm font-bold truncate text-gray-800 dark:text-gray-100">{{ authStore.user?.email || 'Loading...' }}</p>
                 <p class="text-xs text-primary font-medium tracking-tight">Standard Tier</p>
               </div>
+              <button 
+                @click="handleLogout"
+                class="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200 group/logout"
+                title="Logout"
+              >
+                <LogOut class="w-5 h-5 transition-transform group-hover/logout:scale-110" />
+              </button>
             </div>
-            <button 
-              @click="handleLogout"
-              class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition duration-200 group"
-            >
-              <LogOut class="w-5 h-5 transition-transform group-hover:scale-110" />
-              <span class="font-medium">Logout</span>
-            </button>
           </div>
         </div>
       </aside>

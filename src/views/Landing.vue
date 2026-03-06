@@ -37,7 +37,7 @@
             <span>Version 1.0 is Out</span>
           </div>
           <div class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-black">
-            Built with ❤️ by <a href="mailto:darkcolonist@gmail.com" class="text-blue-400 hover:text-blue-300 transition-colors">darkcolonist@gmail.com</a>
+            <a href="https://github.com/darkcolonist/vitecase" class="text-blue-400 hover:text-blue-300 transition-colors">Open Source Built with ❤️</a>
           </div>
         </div>
         
@@ -60,7 +60,7 @@
             <ArrowRight class="w-5 h-5" />
           </router-link>
           <a 
-            href="https:github.com" 
+            href="https://github.com/darkcolonist/vitecase" 
             class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-slate-800 border border-white/10 transition-all flex items-center justify-center space-x-2"
           >
             <Github class="w-5 h-5" />
@@ -240,12 +240,9 @@ CREATE TABLE app_data.profiles (
           <span class="font-bold text-white">ViteCase</span>
           <span class="px-2 py-0.5 bg-white/5 rounded">Free & Open Source</span>
         </div>
-        <p>&copy; 2024 ViteCase. Released under MIT License.</p>
+        <p>&copy; {{ new Date().getFullYear() }} ViteCase. Released under MIT License.</p>
         <div class="flex items-center space-x-6">
-          <a href="mailto:darkcolonist@gmail.com" class="text-blue-400 font-medium hover:text-blue-300 transition-colors">By darkcolonist</a>
-          <div class="h-4 w-[1px] bg-white/10"></div>
-          <a href="#" class="hover:text-white transition-colors">Documentation</a>
-          <a href="#" class="hover:text-white transition-colors">Support</a>
+          <a href="https://github.com/darkcolonist/vitecase" class="text-blue-400 font-medium hover:text-blue-300 transition-colors">Github Repo</a>
         </div>
       </div>
     </footer>

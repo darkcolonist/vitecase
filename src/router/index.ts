@@ -4,7 +4,9 @@ import { useAuthStore } from '../stores/auth'
 const routes = [
   {
     path: '/',
-    redirect: '/dashboard'
+    name: 'landing',
+    component: () => import('../views/Landing.vue'),
+    meta: { public: true }
   },
   {
     path: '/login',
@@ -44,7 +46,7 @@ router.beforeEach(async (to, _from, next) => {
     return next({ name: 'login' })
   }
 
-  if (isPublic && isAuthenticated && to.name === 'login') {
+  if (isPublic && isAuthenticated && (to.name === 'login' || to.name === 'landing')) {
     return next({ name: 'dashboard' })
   }
 

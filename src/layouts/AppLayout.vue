@@ -65,7 +65,7 @@
           </nav>
 
           <!-- Sidebar Footer -->
-          <div class="p-4 border-t border-gray-700">
+          <div class="p-4 border-t border-gray-700 space-y-3">
             <div class="flex items-center space-x-3 px-4 py-3 bg-gray-800 rounded-xl border border-gray-700 shadow-inner group transition-all hover:bg-gray-750">
               <div class="p-2 bg-blue-500 bg-opacity-20 rounded-lg group-hover:bg-opacity-30 transition-all duration-300">
                 <User class="w-5 h-5 text-blue-400" />
@@ -75,6 +75,13 @@
                 <p class="text-xs text-blue-400 font-medium tracking-tight">Standard Tier</p>
               </div>
             </div>
+            <button 
+              @click="handleLogout"
+              class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500 hover:bg-opacity-10 transition duration-200 group"
+            >
+              <LogOut class="w-5 h-5 transition-transform group-hover:scale-110" />
+              <span class="font-medium">Logout</span>
+            </button>
           </div>
         </div>
       </aside>
@@ -142,9 +149,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { Box, LayoutDashboard, UserCircle, Menu, X, User, Sun, Moon } from 'lucide-vue-next'
+import { Box, LayoutDashboard, UserCircle, Menu, X, User, Sun, Moon, LogOut } from 'lucide-vue-next'
 import { useAuthStore } from '../stores/auth'
 import { useUIStore } from '../stores/ui'
+import { useRouter } from 'vue-router'
 
 defineProps<{
   title?: string
@@ -153,6 +161,12 @@ defineProps<{
 const isOpen = ref(false)
 const authStore = useAuthStore()
 const uiStore = useUIStore()
+const router = useRouter()
+
+const handleLogout = async () => {
+  await authStore.signOut()
+  router.push('/login')
+}
 
 onMounted(() => {
   // Ensure DOM is in sync with store state on mount

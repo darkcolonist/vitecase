@@ -59,3 +59,6 @@ If the Supabase environment variables (`VITE_SUPABASE_URL` and `VITE_SUPABASE_AN
 -   **Session Persistence:** Uses `localStorage` to simulate a persistent session.
 -   **Data Simulation:** Bypasses Supabase API calls and returns mock data for profiles and other features.
 -   **Indicator:** A "Demo Mode Active" badge is displayed on the login page.
+
+## 🤖 AI Development Standards
+For automated development (including AI agents), please follow the [AI Agent Guidelines](file:///d:/_gits/dc.vitecase/docs/ai-agent-guidelines.md) to maintain the Schema-First and RLS/Grant standards required by the project.

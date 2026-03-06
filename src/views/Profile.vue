@@ -1,6 +1,6 @@
 <template>
   <AppLayout title="Profile Settings">
-    <div class="p-4 md:p-10 max-w-4xl mx-auto">
+    <div class="space-y-8">
       <div class="mb-10 flex items-center justify-between">
         <div>
           <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">User Profile</h1>

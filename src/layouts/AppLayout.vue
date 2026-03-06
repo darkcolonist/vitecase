@@ -138,7 +138,7 @@
           <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-50/20 dark:from-blue-900/10 to-transparent -z-10 transition-colors duration-700"></div>
           <div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-indigo-50/20 dark:from-indigo-900/10 to-transparent -z-10 transition-colors duration-700"></div>
           
-          <div class="max-w-7xl mx-auto animate-fade-in relative z-10 h-full">
+          <div class="animate-fade-in relative z-10 h-full">
             <slot></slot>
           </div>
         </main>

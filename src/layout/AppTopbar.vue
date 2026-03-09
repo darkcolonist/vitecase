@@ -2,6 +2,7 @@
 import { useLayout } from '@/layout/composables/layout';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
+import { isDemoMode } from '@/api/supabase';
 
 const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout();
 const router = useRouter();
@@ -27,6 +28,7 @@ const onSignOutClick = async () => {
                 <i class="pi pi-box text-primary text-2xl mr-2"></i>
                 <span>ViteCase</span>
             </router-link>
+            <span v-if="isDemoMode" class="ml-2 text-xs font-semibold px-2 py-1 bg-yellow-500 text-gray-900 rounded-md whitespace-nowrap">Demo Mode</span>
         </div>
 
         <div class="layout-topbar-actions">

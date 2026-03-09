@@ -36,8 +36,8 @@ if (!schema || !url || !key) {
 console.log(`🚀 Preparing migration for schema: ${schema}`)
 
 // 3. Prepare directories
-const blueprintPath = path.join(root, 'supabase/blueprints/init_schema.sql')
 const migrationDir = path.join(root, 'supabase/migrations')
+const blueprintPath = path.join(migrationDir, '01_init_schema.sql.example')
 
 if (!fs.existsSync(migrationDir)) {
     fs.mkdirSync(migrationDir, { recursive: true })
@@ -51,10 +51,10 @@ const generatedSql = template.replace(/\{\{SCHEMA\}\}/g, schema)
 const timestamp = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14)
 const outputPath = path.join(migrationDir, `${timestamp}_init_schema.sql`)
 
-// Clear existing migrations to prevent schema duplication conflicts
+// Clear existing migrations to prevent schema duplication conflicts, but keep the example
 const files = fs.readdirSync(migrationDir)
 for (const file of files) {
-    if (file.includes('init_schema.sql')) {
+    if (file.includes('init_schema.sql') && !file.endsWith('.example')) {
         fs.unlinkSync(path.join(migrationDir, file))
     }
 }

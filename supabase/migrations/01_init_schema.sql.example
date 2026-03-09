@@ -1,11 +1,16 @@
+-- [[TEMPLATE_SCHEMA_INIT]]
+-- This is a template blueprint. {{SCHEMA}} will be replaced by the SETUP script.
+
 -- Initialize custom schema
-CREATE SCHEMA IF NOT EXISTS app_data;
+CREATE SCHEMA IF NOT EXISTS {{SCHEMA}};
 
 -- Grant access to standard Supabase roles
-GRANT USAGE ON SCHEMA app_data TO anon, authenticated;
+GRANT USAGE ON SCHEMA {{SCHEMA}} TO anon, authenticated;
+GRANT ALL ON ALL TABLES IN SCHEMA {{SCHEMA}} TO authenticated;
+GRANT SELECT ON ALL TABLES IN SCHEMA {{SCHEMA}} TO anon;
 
--- Create profiles table in the app_data schema
-CREATE TABLE IF NOT EXISTS app_data.profiles (
+-- Create profiles table
+CREATE TABLE IF NOT EXISTS {{SCHEMA}}.profiles (
     id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
     email TEXT UNIQUE NOT NULL,
     full_name TEXT,
@@ -14,30 +19,28 @@ CREATE TABLE IF NOT EXISTS app_data.profiles (
 );
 
 -- Enable Row Level Security
-ALTER TABLE app_data.profiles ENABLE ROW LEVEL SECURITY;
-
--- Grant table access
-GRANT ALL ON TABLE app_data.profiles TO authenticated;
-GRANT SELECT ON TABLE app_data.profiles TO anon;
+ALTER TABLE {{SCHEMA}}.profiles ENABLE ROW LEVEL SECURITY;
 
 -- Create RLS Policies
+DROP POLICY IF EXISTS "Users can only view their own profile" ON {{SCHEMA}}.profiles;
 CREATE POLICY "Users can only view their own profile" 
-ON app_data.profiles 
+ON {{SCHEMA}}.profiles 
 FOR SELECT 
 TO authenticated 
 USING (auth.uid() = id);
 
+DROP POLICY IF EXISTS "Users can only update their own profile" ON {{SCHEMA}}.profiles;
 CREATE POLICY "Users can only update their own profile" 
-ON app_data.profiles 
+ON {{SCHEMA}}.profiles 
 FOR UPDATE 
 TO authenticated 
 USING (auth.uid() = id);
 
--- Function to handle new user registration
+-- Function to handle new user registration (Still in public to be seen by auth trigger)
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO app_data.profiles (id, email, full_name, avatar_url)
+    INSERT INTO {{SCHEMA}}.profiles (id, email, full_name, avatar_url)
     VALUES (
         new.id, 
         new.email, 
@@ -49,6 +52,7 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Trigger to auto-insert a profile on signup
-CREATE OR REPLACE TRIGGER on_auth_user_created
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
 AFTER INSERT ON auth.users
 FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();

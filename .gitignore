@@ -38,3 +38,4 @@ dist-ssr/
 .supabase/
 supabase/.temp-migrations
 supabase/.temp
+supabase/migrations/*_init_schema.sql

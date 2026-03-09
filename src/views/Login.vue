@@ -54,12 +54,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { toast } from 'vue-sonner'
+import { useToast } from 'primevue/usetoast'
 import { supabase, isDemoMode } from '../api/supabase'
 import { useAuthStore } from '../stores/auth'
 
 const router = useRouter()
 const authStore = useAuthStore()
+const toast = useToast()
 const email = ref('')
 const password = ref('')
 const loading = ref(false)
@@ -83,7 +84,7 @@ const handleLogin = async () => {
             router.push('/dashboard')
         }
     } catch (e: any) {
-        toast.error(e.message || 'Failed to login')
+        toast.add({ severity: 'error', summary: 'Error', detail: e.message || 'Failed to login', life: 3000 })
     } finally {
         loading.value = false
     }

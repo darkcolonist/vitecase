@@ -7,7 +7,7 @@ Designed for **Static Hosting on Cloudflare Pages** with a **Supabase custom-sch
 
 ## 🏗️ The ViteCase Stack
 
-* **Frontend:** Vue 3 (Composition API) + Vite (Ultra-fast HMR).
+* **Frontend:** Vue 3 (Composition API) + Vite + PrimeVue (Sakai Admin UI).
 * **Database:** Supabase with `vitecase` custom schema (No prefixes!).
 * **Serverless:** Deno-based Edge Functions for dynamic logic.
 * **Deployment:** Cloudflare Pages (Pure Static SPA).

@@ -18,9 +18,9 @@ export const useUIStore = defineStore('ui', () => {
 
     function updateDOM() {
         if (isDark.value) {
-            document.documentElement.classList.add('dark')
+            document.documentElement.classList.add('dark', 'app-dark')
         } else {
-            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.remove('dark', 'app-dark')
         }
     }
 

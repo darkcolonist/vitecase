@@ -6,6 +6,8 @@ import { useAuthStore } from '../stores/auth'
 // Configure NProgress
 NProgress.configure({ showSpinner: false, trickleSpeed: 200 })
 
+import AppLayout from '@/layout/AppLayout.vue'
+
 const routes = [
   {
     path: '/',
@@ -20,14 +22,20 @@ const routes = [
     meta: { public: true }
   },
   {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: () => import('../views/Dashboard.vue')
-  },
-  {
-      path: '/profile',
-      name: 'profile',
-      component: () => import('../views/Profile.vue')
+    path: '/',
+    component: AppLayout,
+    children: [
+      {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: () => import('../views/Dashboard.vue')
+      },
+      {
+        path: '/profile',
+        name: 'profile',
+        component: () => import('../views/Profile.vue')
+      }
+    ]
   }
 ]
 

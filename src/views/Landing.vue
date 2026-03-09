@@ -5,7 +5,7 @@
       <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div class="flex items-center space-x-3 group cursor-pointer">
           <div class="p-2 bg-blue-600 rounded-lg shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
-            <Box class="w-6 h-6 text-white" />
+            <i class="pi pi-box text-white text-xl"></i>
           </div>
           <span class="text-xl font-bold tracking-tight text-white">ViteCase</span>
         </div>
@@ -57,13 +57,13 @@
             class="w-full sm:w-auto px-8 py-4 bg-white text-slate-950 rounded-2xl font-bold text-lg hover:bg-slate-200 transition-all flex items-center justify-center space-x-2 shadow-xl"
           >
             <span>Get Started</span>
-            <ArrowRight class="w-5 h-5" />
+            <i class="pi pi-arrow-right"></i>
           </router-link>
           <a 
             href="https://github.com/darkcolonist/vitecase" 
             class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-slate-800 border border-white/10 transition-all flex items-center justify-center space-x-2"
           >
-            <Github class="w-5 h-5" />
+            <i class="pi pi-github text-xl"></i>
             <span>GitHub</span>
           </a>
         </div>
@@ -86,7 +86,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <div v-for="feature in features" :key="feature.title" class="group">
             <div class="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all duration-300">
-              <component :is="feature.icon" class="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+              <i :class="feature.icon" class="text-white text-xl group-hover:scale-110 transition-transform"></i>
             </div>
             <h4 class="text-xl font-bold text-white mb-3">{{ feature.title }}</h4>
             <p class="text-slate-400 leading-relaxed">{{ feature.description }}</p>
@@ -106,7 +106,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="p-8 rounded-3xl bg-slate-950 border border-white/5 hover:border-blue-500/30 transition-all group">
             <div class="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Zap class="w-6 h-6 text-emerald-400" />
+              <i class="pi pi-bolt text-xl text-emerald-400"></i>
             </div>
             <h3 class="text-xl font-bold text-white mb-2">Frontend</h3>
             <p class="text-slate-400 text-sm leading-relaxed">Vue 3 (Composition API) + Vite (Ultra-fast HMR) for a blazing developer experience.</p>
@@ -114,7 +114,7 @@
 
           <div class="p-8 rounded-3xl bg-slate-950 border border-white/5 hover:border-indigo-500/30 transition-all group">
             <div class="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Database class="w-6 h-6 text-indigo-400" />
+              <i class="pi pi-database text-xl text-indigo-400"></i>
             </div>
             <h3 class="text-xl font-bold text-white mb-2">Database</h3>
             <p class="text-slate-400 text-sm leading-relaxed">Supabase with custom schemas. No barbaric table prefixing. Clean, structured data.</p>
@@ -122,7 +122,7 @@
 
           <div class="p-8 rounded-3xl bg-slate-950 border border-white/5 hover:border-purple-500/30 transition-all group">
             <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Cloud class="w-6 h-6 text-purple-400" />
+              <i class="pi pi-cloud text-xl text-purple-400"></i>
             </div>
             <h3 class="text-xl font-bold text-white mb-2">Serverless</h3>
             <p class="text-slate-400 text-sm leading-relaxed">Deno-based Edge Functions for dynamic logic that scales globally with zero latency.</p>
@@ -130,7 +130,7 @@
 
           <div class="p-8 rounded-3xl bg-slate-950 border border-white/5 hover:border-orange-500/30 transition-all group">
             <div class="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Globe class="w-6 h-6 text-orange-400" />
+              <i class="pi pi-globe text-xl text-orange-400"></i>
             </div>
             <h3 class="text-xl font-bold text-white mb-2">Deployment</h3>
             <p class="text-slate-400 text-sm leading-relaxed">Cloudflare Pages. Pure static SPA hosting with automatic git-based deployments.</p>
@@ -150,7 +150,7 @@
           <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div class="inline-flex items-center space-x-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-bold uppercase tracking-widest mb-8">
-                <BrainCircuit class="w-4 h-4" />
+                <i class="pi pi-cog text-xs"></i>
                 <span>Engineered for Alignment</span>
               </div>
               <h2 class="text-4xl md:text-6xl font-black text-white leading-tight mb-8">
@@ -167,21 +167,21 @@
             
             <div class="grid grid-cols-1 gap-4">
               <div class="p-6 bg-white/5 border border-white/10 rounded-2xl flex items-start space-x-4 hover:border-amber-500/30 transition-all">
-                <div class="p-3 bg-amber-500/10 rounded-xl"><ShieldAlert class="w-6 h-6 text-amber-400" /></div>
+                <div class="p-3 bg-amber-500/10 rounded-xl"><i class="pi pi-shield text-xl text-amber-400"></i></div>
                 <div>
                   <h4 class="font-bold text-white mb-1">Scope Lock</h4>
                   <p class="text-sm text-slate-400">Strict schema and directory rules that don't give LLMs room to improvise.</p>
                 </div>
               </div>
               <div class="p-6 bg-white/5 border border-white/10 rounded-2xl flex items-start space-x-4 hover:border-amber-500/30 transition-all">
-                <div class="p-3 bg-blue-500/10 rounded-xl"><ZapOff class="w-6 h-6 text-blue-400" /></div>
+                <div class="p-3 bg-blue-500/10 rounded-xl"><i class="pi pi-bolt text-xl text-blue-400"></i></div>
                 <div>
                   <h4 class="font-bold text-white mb-1">Anti-Hallucination</h4>
                   <p class="text-sm text-slate-400">Detailed `ai-agent-guidelines.md` that acts as a cognitive leash for your AI pair programmer.</p>
                 </div>
               </div>
               <div class="p-6 bg-white/5 border border-white/10 rounded-2xl flex items-start space-x-4 hover:border-amber-500/30 transition-all">
-                <div class="p-3 bg-purple-500/10 rounded-xl"><Compass class="w-6 h-6 text-purple-400" /></div>
+                <div class="p-3 bg-purple-500/10 rounded-xl"><i class="pi pi-compass text-xl text-purple-400"></i></div>
                 <div>
                   <h4 class="font-bold text-white mb-1">Zero-Drift Logic</h4>
                   <p class="text-sm text-slate-400">Pattern-driven code structure that makes the 'next right move' obvious to any LLM.</p>
@@ -204,15 +204,15 @@
           </p>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
-              <div class="mt-1 p-1 bg-blue-500/20 rounded-full"><Check class="w-4 h-4 text-blue-400" /></div>
+              <div class="mt-1 p-1 bg-blue-500/20 rounded-full"><i class="pi pi-check text-xs text-blue-400"></i></div>
               <span class="text-slate-300">Schema Isolation for security</span>
             </li>
             <li class="flex items-start space-x-3">
-              <div class="mt-1 p-1 bg-blue-500/20 rounded-full"><Check class="w-4 h-4 text-blue-400" /></div>
+              <div class="mt-1 p-1 bg-blue-500/20 rounded-full"><i class="pi pi-check text-xs text-blue-400"></i></div>
               <span class="text-slate-300">Native RLS Support</span>
             </li>
             <li class="flex items-start space-x-3">
-              <div class="mt-1 p-1 bg-blue-500/20 rounded-full"><Check class="w-4 h-4 text-blue-400" /></div>
+              <div class="mt-1 p-1 bg-blue-500/20 rounded-full"><i class="pi pi-check text-xs text-blue-400"></i></div>
               <span class="text-slate-300">Clean Relationship Mapping</span>
             </li>
           </ul>
@@ -250,57 +250,36 @@ CREATE TABLE vitecase.profiles (
 </template>
 
 <script setup lang="ts">
-import { 
-  Box, 
-  ArrowRight, 
-  Github, 
-  Zap, 
-  Database, 
-  Cloud, 
-  Globe, 
-  Check, 
-  ShieldCheck, 
-  Cpu, 
-  Rocket, 
-  Monitor, 
-  Sparkles, 
-  Star,
-  BrainCircuit,
-  ShieldAlert,
-  ZapOff,
-  Compass
-} from 'lucide-vue-next'
-
 const features = [
   {
     title: 'Schema-First Architecture',
     description: 'Clean data isolation using Supabase vitecase schemas (fully configurable). No more table prefixing or messy migrations.',
-    icon: ShieldCheck
+    icon: 'pi pi-shield'
   },
   {
     title: 'Edge Computing Native',
     description: 'First-class support for Deno-based Edge Functions, enabling global scale with zero cold starts.',
-    icon: Cpu
+    icon: 'pi pi-microchip'
   },
   {
     title: 'Cloudflare Optimized',
     description: 'Engineered for Cloudflare Pages with built-in SPA routing and ultra-fast asset delivery.',
-    icon: Rocket
+    icon: 'pi pi-rocket'
   },
   {
     title: 'Demo Mode Ready',
     description: 'Automatic fallback to a fully functional demo UI when environment variables are missing.',
-    icon: Monitor
+    icon: 'pi pi-desktop'
   },
   {
     title: 'AI Agent Optimized',
     description: 'Strict RLS and schema guidelines designed to work perfectly with AI-assisted development.',
-    icon: Sparkles
+    icon: 'pi pi-sparkles'
   },
   {
     title: 'Premium Foundation',
-    description: 'Vue 3 Carbon-neutral setup with Pinia, Vue Router, and Tailwind CSS pre-configured.',
-    icon: Star
+    description: 'Vue 3 Carbon-neutral setup with Pinia, Vue Router, PrimeVue (Sakai), and Tailwind CSS pre-configured.',
+    icon: 'pi pi-star'
   }
 ]
 </script>

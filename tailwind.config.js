@@ -1,3 +1,5 @@
+import tailwindcssPrimeui from 'tailwindcss-primeui';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
@@ -13,5 +15,5 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [tailwindcssPrimeui],
 }

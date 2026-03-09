@@ -36,6 +36,13 @@ FOR UPDATE
 TO authenticated 
 USING (auth.uid() = id);
 
+DROP POLICY IF EXISTS "Users can insert their own profile" ON {{SCHEMA}}.profiles;
+CREATE POLICY "Users can insert their own profile" 
+ON {{SCHEMA}}.profiles 
+FOR INSERT 
+TO authenticated 
+WITH CHECK (auth.uid() = id);
+
 -- Function to handle new user registration (Still in public to be seen by auth trigger)
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$

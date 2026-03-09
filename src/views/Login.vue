@@ -11,7 +11,7 @@
 
       <form @submit.prevent="handleLogin" class="space-y-6">
         <div>
-          <label class="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Identifier</label>
+          <label class="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Email</label>
           <input
             v-model="email"
             type="text"
@@ -21,7 +21,7 @@
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Secret Key</label>
+          <label class="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2">Password</label>
           <input
             v-model="password"
             type="password"
@@ -44,8 +44,11 @@
         </button>
       </form>
 
-      <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+      <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400 flex flex-col gap-2">
           <p>Request an account? <a href="#" class="text-primary font-bold hover:underline">Contact Admin</a></p>
+          <div>
+              <router-link to="/" class="text-primary font-bold hover:underline">&larr; Return to Home</router-link>
+          </div>
       </div>
     </div>
   </div>

@@ -17,6 +17,16 @@ const model = ref([
                 to: '/profile'
             }
         ]
+    },
+    {
+        label: 'UI Components',
+        items: [
+            {
+                label: 'Components',
+                icon: 'pi pi-fw pi-box',
+                to: '/components'
+            }
+        ]
     }
 ]);
 </script>

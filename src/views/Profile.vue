@@ -17,8 +17,9 @@
     <div class="bg-white dark:bg-surface-900 rounded-2xl shadow-xl border border-gray-100 dark:border-surface-800 overflow-hidden">
       <div class="p-8 border-b border-gray-100 dark:border-surface-800 bg-gray-50 dark:bg-surface-800">
         <div class="flex items-center space-x-5">
-          <div class="p-1 border-4 border-white dark:border-surface-700 bg-blue-100 dark:bg-blue-900/30 rounded-full shadow-md">
-            <i class="pi pi-user text-5xl text-blue-500 dark:text-blue-400 flex items-center justify-center w-20 h-20"></i>
+          <div class="relative w-24 h-24 p-1 border-4 border-white dark:border-surface-700 bg-blue-100 dark:bg-blue-900/30 rounded-full shadow-md flex items-center justify-center flex-shrink-0">
+            <img v-if="profile.avatar_url && profile.avatar_url.trim() !== ''" :src="profile.avatar_url" alt="Avatar" class="w-full h-full rounded-full object-cover" />
+            <i v-else class="pi pi-user text-5xl text-blue-500 dark:text-blue-400"></i>
           </div>
           <div>
             <h2 class="text-2xl font-bold text-gray-800 dark:text-white">{{ authStore.user?.email || 'Loading...' }}</h2>
